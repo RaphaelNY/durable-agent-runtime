@@ -101,6 +101,7 @@ durable-agent-runtime/
 - [项目看板](https://github.com/users/RaphaelNY/projects/2)：Board / Table / Roadmap 三种视图
 - [里程碑](https://github.com/RaphaelNY/durable-agent-runtime/milestones)：P0–P5
 - [Issues](https://github.com/RaphaelNY/durable-agent-runtime/issues)：ADR、spike、功能、测试、bug
+- [看板与视图使用说明](docs/PROJECT_MANAGEMENT.md)
 
 任务流转：Issue → PR（`Closes #N`）→ CI → 合并。决策结论写进 [docs/decisions/](docs/decisions/)，不只留在 issue 评论里。
 
