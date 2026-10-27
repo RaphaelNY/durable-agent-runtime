@@ -1,6 +1,7 @@
 # Durable Agent Runtime
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/RaphaelNY/durable-agent-runtime/actions/workflows/ci.yml/badge.svg)](https://github.com/RaphaelNY/durable-agent-runtime/actions/workflows/ci.yml)
 
 一个可崩溃恢复、可确定性重放的 Agent 运行时：**日志是事实来源，语义记忆是它的派生索引。**
 
