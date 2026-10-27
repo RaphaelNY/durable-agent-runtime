@@ -2,9 +2,9 @@
 
 ## 地址
 
-- 项目看板：https://github.com/users/RaphaelNY/projects/2
-- 里程碑：https://github.com/RaphaelNY/durable-agent-runtime/milestones
-- Issues：https://github.com/RaphaelNY/durable-agent-runtime/issues
+- [项目看板](https://github.com/users/RaphaelNY/projects/2)
+- [里程碑](https://github.com/RaphaelNY/durable-agent-runtime/milestones)
+- [Issues](https://github.com/RaphaelNY/durable-agent-runtime/issues)
 
 ## 模型
 
@@ -62,6 +62,8 @@ Project → 右上角 `...` → Workflows：
 6. 决策结论写进 `docs/decisions/`，issue 只保留讨论和验收。
 
 ## 每周 10 分钟复盘
+
+每周一 09:00（Asia/Shanghai）会自动创建一个 `weekly-review` issue；如果上周的还没关，就不会重复创建。做完打勾并关闭即可。
 
 1. 看 Board：In Progress 是否超过 2 个？超过就说明并行太多。
 2. 把本周完成的 item 确认到 Done。
