@@ -1,23 +1,11 @@
 name: CI
 
-# 只在代码相关文件变化时触发，避免纯文档提交变红。
+# 每次 push/PR 都跑 detect；没有 Cargo.toml 时跳过 Rust 作业。
 # 第一个 Cargo.toml 落地后无需改动本文件即可生效。
 on:
   push:
     branches: [main]
-    paths:
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "crates/**"
-      - "rust-toolchain.toml"
-      - ".github/workflows/ci.yml"
   pull_request:
-    paths:
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "crates/**"
-      - "rust-toolchain.toml"
-      - ".github/workflows/ci.yml"
   workflow_dispatch:
 
 concurrency:

@@ -51,7 +51,7 @@ HNSW（P3）与 P4 可以并行，它只依赖 `VectorIndex` trait。
 - **main / nightly**：加 macOS（fsync 语义不同）、崩溃矩阵、proptest、benchmark。
 - **release**：tag `v*` 构建二进制并发布。
 
-CI 在第一个 `Cargo.toml` 落地后启用；workflow 用路径过滤，避免纯文档提交变红。
+CI 从一开始就启用；`detect` 作业在 `Cargo.toml` 缺席时跳过 Rust 作业，纯文档提交只跑探测。
 
 ## 后果
 
