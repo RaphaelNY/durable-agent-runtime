@@ -42,12 +42,14 @@
 3. 活动执行器：超时、重试、退避、幂等键
 4. 定时器：SetTimer / TimerFired
 5. 崩溃注入：子进程 + 在写入边界 `kill -9`
+6. execution API：start / signal / query / cancel / capabilities + 内存适配器 + conformance suite v0
 
 **验收**：
 
 - 20 个崩溃点 × 100 次运行，不变量违反 = 0
 - 同一 journal 重放 100 次，状态哈希一致
 - 尾部半条记录能截断，且不影响之前的记录
+- 同一套 conformance 测试能跑在 durable runtime 和内存适配器上
 - `cargo clippy -D warnings` 干净
 
 **数据**：
@@ -129,6 +131,8 @@
 
 ## 可选 P5（做完 P4 再决定）
 
+- 第二个 runtime 适配器（内存替身之外的真实后端）
+- conformance suite 完整版：timer、cancel、checkpoint、能力协商
 - 本地 embedding（小模型或 API，不进关键路径）
 - HTTP 查询接口
 - 日志保留 / 分层存储
