@@ -1,0 +1,7 @@
+target/
+/data/
+*.journal
+*.snapshot
+.env
+.DS_Store
+/archive/*
