@@ -31,8 +31,26 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  detect:
+    name: detect workspace
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      has_cargo: ${{ steps.check.outputs.has_cargo }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          if [ -f Cargo.toml ]; then
+            echo "has_cargo=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_cargo=false" >> "$GITHUB_OUTPUT"
+          fi
+
   fmt:
     name: fmt
+    needs: detect
+    if: needs.detect.outputs.has_cargo == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -42,6 +60,8 @@ jobs:
 
   clippy:
     name: clippy
+    needs: detect
+    if: needs.detect.outputs.has_cargo == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -51,6 +71,8 @@ jobs:
 
   test:
     name: test (ubuntu)
+    needs: detect
+    if: needs.detect.outputs.has_cargo == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -62,7 +84,8 @@ jobs:
   # PR 只跑 Ubuntu 控制反馈时间，main / 手动触发再跑 macOS。
   test-macos:
     name: test (macos)
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: detect
+    if: needs.detect.outputs.has_cargo == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: macos-latest
     timeout-minutes: 40
     steps:
@@ -72,6 +95,8 @@ jobs:
 
   doc:
     name: doc
+    needs: detect
+    if: needs.detect.outputs.has_cargo == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
