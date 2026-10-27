@@ -1,0 +1,46 @@
+name: Weekly review
+
+on:
+  schedule:
+    # GitHub cron 使用 UTC。01:00 UTC = 09:00 Asia/Shanghai，每周一。
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  remind:
+    name: create weekly review issue
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Create issue if none is open
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          open_count=$(gh issue list --state open --label weekly-review --json number --jq 'length')
+          if [ "$open_count" -gt 0 ]; then
+            echo "An open weekly review issue already exists; skipping."
+            exit 0
+          fi
+
+          week=$(date -u +%G-W%V)
+          gh issue create \
+            --title "[Weekly] 项目复盘 $week" \
+            --label weekly-review \
+            --assignee "$OWNER" \
+            --body "$(cat <<'EOF'
+          ## 本周复盘（10 分钟）
+
+          - [ ] 看 Board：In Progress 是否 ≤ 2？
+          - [ ] 每个 open issue 都有 Phase / Area / Kind / Size？
+          - [ ] 有没有超过 7 天没动的 In Progress？
+          - [ ] 从 Backlog 选 1–2 个下周任务，设 Status = Todo
+          - [ ] 按 `docs/LEARNING.md` 的模板写 5 行复盘
+          - [ ] 关闭本 issue
+          EOF
+          )"
