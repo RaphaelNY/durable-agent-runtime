@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 先读项目文档
+    url: https://github.com/RaphaelNY/durable-agent-runtime/tree/main/docs
+    about: CONTRACTS / ARCHITECTURE / PLAN 里可能已经有答案

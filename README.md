@@ -1,5 +1,7 @@
 # Durable Agent Runtime
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 一个可崩溃恢复、可确定性重放的 Agent 运行时：**日志是事实来源，语义记忆是它的派生索引。**
 
 > 状态：P0 设计阶段。代码尚未开始，先在 [docs/CONTRACTS.md](docs/CONTRACTS.md) 里把事件 schema、checkpoint 和恢复语义定下来，再动手写。
@@ -93,6 +95,19 @@ durable-agent-runtime/
 3. [docs/PLAN.md](docs/PLAN.md) —— 分期与验收
 4. [docs/INTERVIEW.md](docs/INTERVIEW.md) —— 这个项目在面试里怎么讲
 
+## 进度与任务
+
+- 当前阶段：**P0 契约**（详见 [PLAN.md](docs/PLAN.md)）
+- [项目看板](https://github.com/users/RaphaelNY/projects/2)：Board / Table / Roadmap 三种视图
+- [里程碑](https://github.com/RaphaelNY/durable-agent-runtime/milestones)：P0–P5
+- [Issues](https://github.com/RaphaelNY/durable-agent-runtime/issues)：ADR、spike、功能、测试、bug
+
+任务流转：Issue → PR（`Closes #N`）→ CI → 合并。决策结论写进 [docs/decisions/](docs/decisions/)，不只留在 issue 评论里。
+
 ## 协作方式
 
 这是一个学习优先的个人项目，核心代码自己写。见 [AGENTS.md](AGENTS.md)：agent 默认只解释、给方案、review，不代写实现。
+
+## License
+
+[MIT](LICENSE) © 2026 RaphaelNY
